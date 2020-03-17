@@ -22,7 +22,7 @@ public class Registor
 	 Properties obj = new Properties();	
 	 
 	// Load file so we can use into our script
-
+// Changes from git
 
 
 @Given("^The registor page$")
