@@ -22,7 +22,7 @@ public class Registor
 	 Properties obj = new Properties();	
 	 
 	// Load file so we can use into our script
-// Changes from git
+
 
 
 @Given("^The registor page$")
@@ -43,6 +43,7 @@ public void i_will_the_neccessary_detials_like_username(String FirstName) throws
 		
 	    FileInputStream objfile = new FileInputStream(System.getProperty("user.dir")+"\\config\\configuration.properties");
 	    obj.load(objfile);
+	    
 		driver.findElement(By.xpath(obj.getProperty("FirstName"))).sendKeys(FirstName);
 		WebElement Element=driver.findElement(By.xpath(obj.getProperty("LastName")));
 			Element.sendKeys("Nawaz");
