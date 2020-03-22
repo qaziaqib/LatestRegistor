@@ -33,8 +33,7 @@ public void the_registor_page() throws Throwable {
 	 driver=new ChromeDriver();  //initiate chromebrowser
 	driver.get("http://demo.automationtesting.in/Register.html");  //pass url using get method of driver class
 //	driver.manage().window().maximize();    //To maximize the window
-	
-   
+
 }
 @Then("^I will the neccessary detials like username \"([^\"]*)\"$")
 
@@ -130,5 +129,6 @@ Select drpday = new Select(driver.findElement(By.id("daybox")));
 public void click_on_registor() throws Throwable {
 	
 	driver.findElement(By.xpath(obj.getProperty("signup"))).click();
+
 }}
 
