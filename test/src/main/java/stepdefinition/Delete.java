@@ -26,8 +26,10 @@ public class Delete {
 		 FileInputStream objfile = new FileInputStream(System.getProperty("user.dir")+"\\config\\configuration.properties");
 		     
 		obj.load(objfile);
-		driver.findElement(By.xpath(obj.getProperty("Area"))).sendKeys("Kashmir");
-		
+		if( driver.findElement(By.xpath("//*[text()='qazicse@gmail.com']")).isDisplayed()){
+		}	
+		else
+			System.out.println("no obj found");
 	}
 
 	@Then("^I delete the record\\.$")

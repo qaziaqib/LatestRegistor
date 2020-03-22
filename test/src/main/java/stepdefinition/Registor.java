@@ -20,24 +20,14 @@ public class Registor
 {   //System.setProperty("webdriver.chrome.driver","\\C:\\Users\\hp\\Downloads\\chromedriver_win32\\chromedriver.exe");
 	WebDriver driver;
 	 Properties obj = new Properties();	
-	 
+	;
 	// Load file so we can use into our script
 
 
 
-@Given("^The registor page$")
-public void the_registor_page() throws Throwable {
-	System.setProperty("webdriver.chrome.driver","\\C:\\Users\\hp\\Downloads\\chromedriver_win321\\chromedriver.exe"); //set property of driver
-	
-//	WebDriverManager.chromedriver().setup();
-	 driver=new ChromeDriver();  //initiate chromebrowser
-	driver.get("http://demo.automationtesting.in/Register.html");  //pass url using get method of driver class
-//	driver.manage().window().maximize();    //To maximize the window
 
-}
-@Then("^I will the neccessary detials like username \"([^\"]*)\"$")
-
-public void i_will_the_neccessary_detials_like_username(String FirstName) throws Throwable {
+@Then("^I will the neccessary detials like username \"([^\"]*)\" Email \"([^\"]*)\" PhoneNo \"([^\"]*)\"$")
+public void i_will_the_neccessary_detials_like_username(String FirstName,String Email,String PhoneNo) throws Throwable {
 	
 		
 	    FileInputStream objfile = new FileInputStream(System.getProperty("user.dir")+"\\config\\configuration.properties");
@@ -50,8 +40,8 @@ public void i_will_the_neccessary_detials_like_username(String FirstName) throws
 		//	((RemoteWebElement E1 ).setFileDetector(new LocalFileDetector());
 			E1.sendKeys("C:/Users/hp/Desktop/image.jpeg");
 			driver.findElement(By.xpath(obj.getProperty("Area"))).sendKeys("Kashmir");
-			driver.findElement(By.xpath(obj.getProperty("Email"))).sendKeys("qazicse@gmail.com");
-			driver.findElement(By.xpath(obj.getProperty("phoneno"))).sendKeys("8899084992");
+			driver.findElement(By.xpath(obj.getProperty("Email"))).sendKeys(Email);
+			driver.findElement(By.xpath(obj.getProperty("phoneno"))).sendKeys(PhoneNo);
 			driver.manage().window().maximize();
 			driver.findElement(By.xpath(obj.getProperty("Gender"))).click();
 			driver.findElement(By.xpath(obj.getProperty("Hobbies1"))).click();
@@ -121,14 +111,17 @@ Select drpday = new Select(driver.findElement(By.id("daybox")));
 		//	Select dropdown=new Select(Languagedropdown);
 		//	dropdown.selectByIndex(10);
 			Thread.sleep(1000);
-			driver.findElement(By.id("imagesrc")).sendKeys("C:\\Users\\hp\\Desktop\\image.jpeg");
+			driver.findElement(By.id("imagesrc")).sendKeys("C:\\Users\\hp\\Desktop\\image.jpeg"); 
   
 }
 
 @Then("^click on registor$")
 public void click_on_registor() throws Throwable {
-	
+	 FileInputStream objfile = new FileInputStream(System.getProperty("user.dir")+"\\config\\configuration.properties");
+	    obj.load(objfile);
 	driver.findElement(By.xpath(obj.getProperty("signup"))).click();
+	Thread.sleep(6000);
+	driver.findElement(By.xpath(obj.getProperty("Registor"))).click();
 
 }}
 
