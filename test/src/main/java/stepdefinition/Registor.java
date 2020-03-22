@@ -22,7 +22,19 @@ public class Registor
 	 Properties obj = new Properties();	
 	;
 	// Load file so we can use into our script
+	@Given("^The registor page and open browser \"([^\"]*)\"$")
+	public void the_registor_page(boolean browserOpen) throws Throwable {
+		if(browserOpen==true) {
+		System.setProperty("webdriver.chrome.driver","\\C:\\Users\\hp\\Downloads\\chromedriver_win321\\chromedriver.exe"); //set property of driver
+		
+//		WebDriverManager.chromedriver().setup();
+		 driver=new ChromeDriver();  //initiate chromebrowser
+		 
+		driver.get("http://demo.automationtesting.in/Register.html");  //pass url using get method of driver class
+		 }
+//		driver.manage().window().maximize();    //To maximize the window
 
+	}
 
 
 
