@@ -10,6 +10,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.support.ui.Select;
 
@@ -18,11 +19,11 @@ import cucumber.api.java.en.Then;
 
 public class Registor
 {   //System.setProperty("webdriver.chrome.driver","\\C:\\Users\\hp\\Downloads\\chromedriver_win32\\chromedriver.exe");
-	WebDriver driver;
+	static WebDriver driver;
 	 Properties obj = new Properties();	
-	;
+	;driver.findElement(By.xpath("")).getScreenshotAs(OutputType.FILE);
 	// Load file so we can use into our script
-	@Then("^The registor page and open browser \"([^\"]*)\"$")
+	@Given("^The registor page and open browser \"([^\"]*)\"$")
 	public void the_registor_page(boolean browserOpen) throws Throwable {
 		if(browserOpen==true) {
 		System.setProperty("webdriver.chrome.driver","\\C:\\Users\\hp\\Downloads\\chromedriver_win321\\chromedriver.exe"); //set property of driver
@@ -32,8 +33,7 @@ public class Registor
 		 
 		driver.get("http://demo.automationtesting.in/Register.html");  //pass url using get method of driver class
 		 }
-//		driver.manage().window().maximize();    //To maximize the window
-
+	
 	}
 
 
@@ -44,7 +44,7 @@ public void i_will_the_neccessary_detials_like_username(String FirstName,String 
 		
 	    FileInputStream objfile = new FileInputStream(System.getProperty("user.dir")+"\\config\\configuration.properties");
 	    obj.load(objfile);
-	    
+	    Thread.sleep(5000);
 		driver.findElement(By.xpath(obj.getProperty("FirstName"))).sendKeys(FirstName);
 		WebElement Element=driver.findElement(By.xpath(obj.getProperty("LastName")));
 			Element.sendKeys("Nawaz");

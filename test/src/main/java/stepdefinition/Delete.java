@@ -31,10 +31,10 @@ public class Delete {
 			driver.get("http://demo.automationtesting.in/Register.html");  //pass url using get method of driver class
 			 }
 //			driver.manage().window().maximize();    //To maximize the window
-
+			
 		}
 	    
-/*	@Given("^I click Edit button and make changes$")
+	@Given("^I click Edit button and make changes$")
 	public void i_click_Edit_button_and_make_changes() throws Throwable {
 		 FileInputStream objfile = new FileInputStream(System.getProperty("user.dir")+"\\config\\configuration.properties");
 		     
@@ -42,13 +42,10 @@ public class Delete {
 		driver.findElement(By.xpath(obj.getProperty("WebTable"))).click();
 		Thread.sleep(10000);
 	boolean display;
-	try
-	{
+	
  List  list=(List<WebElement>) driver.findElement(By.xpath("//*[text()='qazicse@gmail.com']"));}
- catch()
-	{
-	 
-  }
+ 
+  
 //	if(list.size()==0);
 // System.out.println("no such element");
 		
@@ -56,7 +53,6 @@ public class Delete {
 	}
 		
 		
-			*/
 
 	@Then("^I delete the record\\.$")
 	public void i_delete_the_record() throws Throwable {
