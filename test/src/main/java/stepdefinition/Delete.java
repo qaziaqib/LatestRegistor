@@ -40,18 +40,27 @@ public class Delete {
 		 FileInputStream objfile = new FileInputStream(System.getProperty("user.dir")+"\\config\\configuration.properties");
 		     
 		obj.load(objfile);
-		driver.findElement(By.xpath(obj.getProperty("WebTable"))).click();
 		Thread.sleep(10000);
+		driver.findElement(By.xpath(obj.getProperty("WebTable"))).click();
+		
 	boolean display;
-	Thread.sleep(5000);
+	Thread.sleep(10000);
+	driver.manage().window().maximize();                   
+//	List <WebElement> webelement=	driver.findElements(By.xpath("//div[contains(@id,\"uiGrid-0005-cell\")]")); 
+//	for(int i=0;i<webelement.size();i++)
+//	System.out.println(( webelement.get(i)).getText());
+	//int index =webelement.indexOf("lucasvaz.bastos@hotmail.com");
+//	System.out.println(index);
 	Actions action=new Actions(driver);
-	WebElement deletebutton=driver.findElement(By.xpath("//div[text()=\"qazie@gmail.com\"]/following::div[10]/del-click"));
+Thread.sleep(10000);
+	
+WebElement deletebutton=driver.findElement(By.xpath("//div[text()=\"kmud005@gmail.com\"]/following::div[10]/del-click"));
 //int size=WebElements.size();
 	
-	action.contextClick(deletebutton).perform();
+	action.contextClick(deletebutton).perform();//performs right click
 	
-	Thread.sleep(2000);
-	driver.findElement(By.xpath(obj.getProperty("Delete"))).click();
+	Thread.sleep(3000);
+	driver.findElement(By.xpath("//div[text()=\"kmud005@gmail.com\"]/following::div[11]/ul/li[1]")).click();
 // System.out.println(size);
 // System.out.println("hgdsjchsdgbcjzdchsdbhvsdh");
 	}
