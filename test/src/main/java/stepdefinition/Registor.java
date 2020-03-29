@@ -21,7 +21,7 @@ public class Registor
 {   //System.setProperty("webdriver.chrome.driver","\\C:\\Users\\hp\\Downloads\\chromedriver_win32\\chromedriver.exe");
 	static WebDriver driver;
 	 Properties obj = new Properties();	
-	;driver.findElement(By.xpath("")).getScreenshotAs(OutputType.FILE);
+//	;driver.findElement(By.xpath("")).getScreenshotAs(OutputType.FILE);
 	// Load file so we can use into our script
 	@Given("^The registor page and open browser \"([^\"]*)\"$")
 	public void the_registor_page(boolean browserOpen) throws Throwable {

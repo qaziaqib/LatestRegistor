@@ -12,6 +12,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.support.ui.Select;
 
@@ -42,15 +43,26 @@ public class Delete {
 		driver.findElement(By.xpath(obj.getProperty("WebTable"))).click();
 		Thread.sleep(10000);
 	boolean display;
+	Thread.sleep(5000);
+	Actions action=new Actions(driver);
+	WebElement deletebutton=driver.findElement(By.xpath("//div[text()=\"qazie@gmail.com\"]/following::div[10]/del-click"));
+//int size=WebElements.size();
 	
- List  list=(List<WebElement>) driver.findElement(By.xpath("//*[text()='qazicse@gmail.com']"));}
+	action.contextClick(deletebutton).perform();
+	
+	Thread.sleep(2000);
+	driver.findElement(By.xpath(obj.getProperty("Delete"))).click();
+// System.out.println(size);
+// System.out.println("hgdsjchsdgbcjzdchsdbhvsdh");
+	}
  
   
+	
 //	if(list.size()==0);
 // System.out.println("no such element");
 		
 	
-	}
+	
 		
 		
 
