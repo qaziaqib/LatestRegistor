@@ -7,4 +7,4 @@ Then click on registor
     Examples: 
       | FirstName       |browserOpen|Email       |PhoneNo|
      | Aqiazt       |   true    |qazde@gmail.com|6958203662|
-      |  Iatan      |   true   |ina@gmail.com|9709981745|
+      |  Iatan      |   false   |ina@gmail.com|9709981745|

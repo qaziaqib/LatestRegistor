@@ -54,13 +54,15 @@ public class Delete {
 	Actions action=new Actions(driver);
 Thread.sleep(10000);
 	
-WebElement deletebutton=driver.findElement(By.xpath("//div[text()=\"kmud005@gmail.com\"]/following::div[10]/del-click"));
+WebElement deletebutton=driver.findElement(By.xpath("//div[text()=\"qazie@gmail.com\"]/following::div[10]/del-click"));
 //int size=WebElements.size();
 	
 	action.contextClick(deletebutton).perform();//performs right click
 	
 	Thread.sleep(3000);
-	driver.findElement(By.xpath("//div[text()=\"kmud005@gmail.com\"]/following::div[11]/ul/li[1]")).click();
+	driver.findElement(By.xpath("//div[text()=\"qazie@gmail.com\"]/following::div[11]/ul/li[1]")).click();
+	driver.switchTo().alert().accept();//
+	//driver.findElement(By.xpath(obj.getProperty("okay"))).click();
 // System.out.println(size);
 // System.out.println("hgdsjchsdgbcjzdchsdbhvsdh");
 	}
