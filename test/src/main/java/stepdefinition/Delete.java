@@ -19,7 +19,7 @@ import org.openqa.selenium.support.ui.Select;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 public class Delete {
-	WebDriver driver;
+	static WebDriver driver;
 	 Properties obj = new Properties();
 	 @Given("^The registor page and open Browser \"([^\"]*)\"$")
 		public void the_registor_page(boolean browserOpen) throws Throwable {
@@ -35,8 +35,8 @@ public class Delete {
 			
 		}
 	    
-		@Then("^I delete the record\\.$")
-	public void i_delete_the_record() throws Throwable {
+		@Then("^I delete the record email \"([^\"]*)\"\\.$")
+	public void i_delete_the_record(String Email) throws Throwable {
 		FileInputStream objfile = new FileInputStream(System.getProperty("user.dir")+"\\config\\configuration.properties");
 	     
 		obj.load(objfile);
@@ -60,7 +60,7 @@ public class Delete {
     	try {
     
  
-        		String text=driver.findElement(By.xpath("//div[text()='qazde@gmail.com']")).getText();
+        		String text=driver.findElement(By.xpath("//div[text()='"+Email+"']")).getText();
         		System.out.println(text);
         		break;
        
@@ -75,13 +75,13 @@ public class Delete {
 
 
 
-WebElement deletebutton=driver.findElement(By.xpath("//div[text()=\"qazde@gmail.com\"]/following::div[10]/del-click"));
+WebElement deletebutton=driver.findElement(By.xpath("//div[text()='"+Email+"']/following::div[10]/del-click"));
 //int size=WebElements.size();
 	
 	action.contextClick(deletebutton).perform();//performs right click
 
 	Thread.sleep(3000);
-	driver.findElement(By.xpath("//div[text()=\"qazde@gmail.com\"]/following::div[11]/ul/li[1]")).click();
+	driver.findElement(By.xpath("//div[text()='"+Email+"']/following::div[11]/ul/li[1]")).click();
 	driver.switchTo().alert().accept();//
 	
 
