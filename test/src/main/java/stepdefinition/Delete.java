@@ -35,10 +35,10 @@ public class Delete {
 			
 		}
 	    
-	@Given("^I click Edit button and make changes$")
-	public void i_click_Edit_button_and_make_changes() throws Throwable {
-		 FileInputStream objfile = new FileInputStream(System.getProperty("user.dir")+"\\config\\configuration.properties");
-		     
+		@Then("^I delete the record\\.$")
+	public void i_delete_the_record() throws Throwable {
+		FileInputStream objfile = new FileInputStream(System.getProperty("user.dir")+"\\config\\configuration.properties");
+	     
 		obj.load(objfile);
 		Thread.sleep(10000);
 		driver.findElement(By.xpath(obj.getProperty("WebTable"))).click();
@@ -52,34 +52,71 @@ public class Delete {
 	//int index =webelement.indexOf("lucasvaz.bastos@hotmail.com");
 //	System.out.println(index);
 	Actions action=new Actions(driver);
-Thread.sleep(10000);
-	
-WebElement deletebutton=driver.findElement(By.xpath("//div[text()=\"qazie@gmail.com\"]/following::div[10]/del-click"));
+    Thread.sleep(10000);
+//display=driver.findElement(By.xpath("//div[text()=\"Maheshraj@gmail.com\"]")).ispresent();
+
+    do {
+    	
+    	try {
+    	//	if(!driver.findElement(By.xpath("//div[text()='qazde@gmail.com']")).getText().equals(null))
+     //   	{
+        		String text=driver.findElement(By.xpath("//div[text()='qazde@gmail.com']")).getText();
+        		System.out.println(text);
+        		break;
+        //	}
+    	//	driver.findElement(By.xpath(obj.getProperty("Next"))).click();
+    	}
+    	catch(Exception babajii)
+    	{
+    		driver.findElement(By.xpath(obj.getProperty("Next"))).click();
+    	}
+    }while(true);
+  //  while(!driver.findElement(By.xpath(obj.getProperty("Next"))).isEnabled());
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+ //   while(driver.findElement(By.xpath("//div[text()='qazde@gmail.com']")).getText()==null)
+
+	//driver.findElement(By.xpath(obj.getProperty("Next"))).click();
+	Thread.sleep(4000);
+	//display=driver.findElement(By.xpath("//div[text()=\"qazde@gmail.com\"]")).isDisplayed();
+
+
+
+WebElement deletebutton=driver.findElement(By.xpath("//div[text()=\"qazde@gmail.com\"]/following::div[10]/del-click"));
 //int size=WebElements.size();
 	
 	action.contextClick(deletebutton).perform();//performs right click
-	
+
 	Thread.sleep(3000);
-	driver.findElement(By.xpath("//div[text()=\"qazie@gmail.com\"]/following::div[11]/ul/li[1]")).click();
+	driver.findElement(By.xpath("//div[text()=\"qazde@gmail.com\"]/following::div[11]/ul/li[1]")).click();
 	driver.switchTo().alert().accept();//
 	//driver.findElement(By.xpath(obj.getProperty("okay"))).click();
 // System.out.println(size);
 // System.out.println("hgdsjchsdgbcjzdchsdbhvsdh");
-	}
- 
-  
-	
-//	if(list.size()==0);
-// System.out.println("no such element");
-		
-	
-	
-		
-		
 
-	@Then("^I delete the record\\.$")
-	public void i_delete_the_record() throws Throwable {
-	   
+
 	}
 
 
