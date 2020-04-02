@@ -1,5 +1,5 @@
 package stepdefinition;
-hcbsdh
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -127,12 +127,29 @@ Select drpday = new Select(driver.findElement(By.id("daybox")));
   
 }
 
-@Then("^click on registor$")
-public void click_on_registor() throws Throwable {
+
+@Then("^click on registor and Check Email \"([^\"]*)\"$")
+public void click_on_registor(String Email) throws Throwable {
 	 FileInputStream objfile = new FileInputStream(System.getProperty("user.dir")+"\\config\\configuration.properties");
 	    obj.load(objfile);
 	driver.findElement(By.xpath(obj.getProperty("signup"))).click();
 	Thread.sleep(6000);
+	 do {
+	    	
+	    	try {
+	    
+	 
+	        		String text=driver.findElement(By.xpath("//div[text()='"+Email+"']")).getText();
+	        		System.out.println(text);
+	        		break;
+	       
+	    	
+	    	}
+	    	catch(Exception babajii)
+	    	{ Thread.sleep(2000);
+	    		driver.findElement(By.xpath(obj.getProperty("Next"))).click();
+	    	}
+	    }while(true);
 	driver.findElement(By.xpath(obj.getProperty("Registor"))).click();
 
 }}

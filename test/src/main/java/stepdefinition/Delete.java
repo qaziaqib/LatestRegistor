@@ -67,14 +67,14 @@ public class Delete {
     	
     	}
     	catch(Exception babajii)
-    	{
+    	{ Thread.sleep(2000);
     		driver.findElement(By.xpath(obj.getProperty("Next"))).click();
     	}
     }while(true);
  
 
 
-
+Thread.sleep(5000);
 WebElement deletebutton=driver.findElement(By.xpath("//div[text()='"+Email+"']/following::div[10]/del-click"));
 //int size=WebElements.size();
 	
