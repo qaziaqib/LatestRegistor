@@ -39,8 +39,8 @@ int  Totalprice;
 	}
 
 	
-	@Then("^I book a online product ProductOne \"([^\"]*)\" ProductTwo \"([^\"]*)\" productThree \"([^\"]*)\"$")
-	public void i_book_a_online_product_ProductOne_ProductTwo_productThree(String product1, String product2, String product3) throws Exception{
+	@Then("^I book a online product ProductOne \"([^\"]*)\" ProductTwo \"([^\"]*)\" productThree \"([^\"]*)\" productdelete \"([^\"]*)\"$")
+	public void i_book_a_online_product_ProductOne_ProductTwo_productThree(String product1, String product2, String product3,String productdelete) throws Exception{
 	    // Write code here that turns the phrase above into concrete actions
 	   
 		FileInputStream objfile = new FileInputStream(System.getProperty("user.dir")+"\\config\\configuration.properties");
@@ -100,7 +100,48 @@ Thread.sleep(3000);
      System.out.print(am);
      driver.findElement(By.xpath("//*[@class=\"cartcontents\"]")).click();
     Thread.sleep(5000);
+    String Amount_deducted=driver.findElement(By.xpath("//*[text()='"+productdelete+"']/ancestor::tr[1]/td[6]")).getText();	
+    int inendff=Amount_deducted.indexOf(".");
+    Amount_deducted=Amount_deducted.substring(1,inendff);
+	 Pattern stg = Pattern.compile("\\d+");
+     Matcher mmm = stg.matcher(Amount_deducted);
+     String ar = "";
+     while(mmm.find()) {
+    	 ar += mmm.group();
+    	 }
+    int amount_deducted1=Integer.parseInt(Amount_deducted);
+    driver.findElement(By.xpath("//*[text()='"+productdelete+"']/ancestor::tr[1]/td[1]/a[1]")).click();	
+    int Amount_After_deduction=Totalprice-amount_deducted1;
+    Thread.sleep(10000);
+    String new_amount=driver.findElement(By.xpath(obj.getProperty("Amount.btn"))).getText();
+    int inendf=new_amount.indexOf(".");
+	 new_amount=new_amount.substring(1,inendf);
+	 Pattern r = Pattern.compile("\\d+");
+    Matcher s = r.matcher(new_amount);
+    String amm="";
+    while(s.find()) {
+   	 amm += s.group();
+	}int Amount1= Integer.parseInt(amm);
+	Thread.sleep(3000);
+    Assert.assertEquals(Amount_After_deduction,Amount1);
     
-    driver.findElement(By.xpath("//*[text()='"+product1+"']/ancestor::tr[1]/td[1]/a[1]")).click();	
-    }
 	}
+@Then("^fill information state \"([^\"]*)\"$")
+public void fill_information_state(String State) throws Throwable
+{
+
+
+
+    driver.findElement(By.xpath("//a[@href=\"http://practice.automationtesting.in/checkout/\"]")).click();
+    driver.findElement(By.xpath("//input[@name=\"billing_first_name\"]")).sendKeys("Aqib");
+    driver.findElement(By.xpath("//input[@name=\"billing_last_name\"]")).sendKeys("nawaz");
+    driver.findElement(By.xpath("//input[@name=\"billing_email\"]")).sendKeys("qazicse1@gmail.com");
+    driver.findElement(By.xpath("//input[@name=\"billing_phone\"]")).sendKeys("9731014207");
+    driver.findElement(By.xpath("//input[@name=\"billing_address_1\"]")).sendKeys("xyzsjdhsahd");
+    driver.findElement(By.xpath("//input[@name=\"billing_city\"]")).sendKeys("rawalpora");
+    driver.findElement(By.xpath("//*[@class=\"select2-container state_select\"]")).click();
+ //   Select countriessates=new Select(driver.findElement(By.xpath("//*[@class=\"select2-container state_select\"]")));
+ //   driver.findElement(By.xpath("//*[@class=\"select2-container state_select\"]")).click();
+}
+	}
+	
